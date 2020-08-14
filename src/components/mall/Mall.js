@@ -11,34 +11,30 @@ import axios from 'axios';
 class Mall extends React.Component{
 
     state = {
-        products:[
-            {
-                img: 'https://img14.360buyimg.com/n0/jfs/t4705/83/2924377281/70031/aed9bbd3/58f5629dN79b4406c.jpg',
-                name: '测试',
-                price: '5',
-                unit: '罐',
-            },
-            {
-                img: 'https://img14.360buyimg.com/n0/jfs/t4705/83/2924377281/70031/aed9bbd3/58f5629dN79b4406c.jpg',
-                name: '测试2',
-                price: '5',
-                unit: '罐',
-            },
-            {
-                img: 'https://img14.360buyimg.com/n0/jfs/t4705/83/2924377281/70031/aed9bbd3/58f5629dN79b4406c.jpg',
-                name: '测试3',
-                price: '5',
-                unit: '罐',
-            }
-        ]
+        // productssss : [],
+        products:[]
     }
 
+    componentDidMount() {
+        this.getProductsData();
+    }
+
+    getProductsData() {
+        axios.get('/product/all')
+            .then((respone) => {
+                this.setState({
+                    products : respone.data,
+                });
+            })
+    }
+
+    
     render() {
         return <div className="mall">
             {this.state.products.map((item) => 
                 <Product
                     key={item.name}
-                    img={item.img} 
+                    img={item.image} 
                     name={item.name} 
                     price={item.price} 
                     unit={item.unit}
