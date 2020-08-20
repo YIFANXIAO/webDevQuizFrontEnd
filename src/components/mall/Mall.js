@@ -1,17 +1,11 @@
 import React from 'react'
 import Product from './Product'
 import axios from 'axios';
-// import './components/mall/Mall.css'
-
-// let fetch = axios.create({
-//     baseURL: "http://localhost:8080", // 这里是本地express启动的服务地址
-//     timeout: 5000 // request timeout
-// })
+import { List } from 'antd';
 
 class Mall extends React.Component{
 
     state = {
-        // productssss : [],
         products:[]
     }
 
@@ -30,17 +24,21 @@ class Mall extends React.Component{
 
     
     render() {
-        return <div className="mall">
-            {this.state.products.map((item) => 
+        return <List
+            grid={{ gutter: 16, column: 4 }}
+            dataSource={this.state.products}
+            renderItem={item => (
+            <List.Item>
                 <Product
-                    key={item.name}
+                    key={item.id}
                     img={item.image} 
                     name={item.name} 
                     price={item.price} 
                     unit={item.unit}
                 ></Product>
+            </List.Item>
             )}
-        </div>
+        />
     }
 }
 

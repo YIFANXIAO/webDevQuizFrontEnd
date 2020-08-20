@@ -5,6 +5,7 @@ import { Layout} from 'antd';
 import MyHeader from './components/MyHeader';
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Mall from './components/mall/Mall'
+import Order from './components/order/Order'
 
 const {Content, Footer } = Layout;
 
@@ -15,19 +16,13 @@ function App() {
         <Layout className="layout">
           <MyHeader />
           <Content style={{ padding: '0 50px' }}>
-            {/* <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className="site-layout-content">Content</div> */}
             <Switch>
                 <Route exact path='/' component={Mall}/>
-                <Route path='/counters' component={Mall}/>
-                <Route path='/form' component={Mall}/>
+                <Route path='/orders' component={Order}/>
+                <Route path='/add-product' component={Mall}/>
             </Switch>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>TW Mall ©2020 Created by ForCheng</Footer>
         </Layout>
       </BrowserRouter>
     </div>
