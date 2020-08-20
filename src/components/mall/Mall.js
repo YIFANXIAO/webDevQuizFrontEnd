@@ -31,6 +31,7 @@ class Mall extends React.Component{
             <List.Item>
                 <Product
                     key={item.id}
+                    productId={item.id}
                     img={item.image} 
                     name={item.name} 
                     price={item.price} 

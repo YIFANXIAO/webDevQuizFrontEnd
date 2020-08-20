@@ -15,10 +15,10 @@ class Order extends React.Component{
     };
 
     componentDidMount() {
-        this.getOrderssData();
+        this.getOrdersData();
     }
 
-    getOrderssData() {
+    getOrdersData() {
         axios.get('/order/all')
             .then((respone) => {
                 this.setState({
@@ -31,11 +31,11 @@ class Order extends React.Component{
     reloadPage = () => {
       window.location.reload();
     }
-    
+  
     handleDeleteOrder = (id) => {
         console.log(id);
         axios.delete('/order/' + id);
-        this.getOrderssData();
+        this.reloadPage();
     }
 
     render() {

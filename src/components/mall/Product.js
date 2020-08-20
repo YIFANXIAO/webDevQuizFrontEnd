@@ -1,9 +1,15 @@
 import React from 'react'
 import { Card } from 'antd';
 import { Button } from 'antd';
+import axios from 'axios';
 const { Meta } = Card;
 
 class Product extends React.Component{
+
+    onHandleBuy = (id) => {
+        axios.post('/order/' + id)
+    }
+
     render() {
         return <div>
             <Card
@@ -13,7 +19,7 @@ class Product extends React.Component{
             >
                 <Meta title={this.props.name}/>
                 <p>单价：{this.props.price}元/{this.props.unit}</p>
-                <Button type="primary" onClick={this.onHandleBuy}>购买</Button>
+                <Button type="primary" onClick={() => this.onHandleBuy(this.props.productId)}>购买</Button>
             </Card>
         </div>
     }
