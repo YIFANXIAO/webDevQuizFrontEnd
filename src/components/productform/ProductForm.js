@@ -20,9 +20,11 @@ class ProductForm extends React.Component {
         axios.post('/product', values)
           .then((req) => {
             if(req.status === 200) {
-              this.reloadPage();
               message.success('已成功添加商品')
             }
+          })
+          .then(() => {
+            this.reloadPage();
           });
       }
       const handleFormFeild = errorInfo => {
