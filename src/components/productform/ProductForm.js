@@ -3,6 +3,8 @@ import { Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import './ProductForm.css'
 
+import { validateNumLength } from '../common/validators'
+
 class ProductForm extends React.Component {
 
     state = {
@@ -19,6 +21,7 @@ class ProductForm extends React.Component {
         console.log('触发了onFinish', values);
         axios.post('/product', values)
           .then((req) => {
+            
             if(req.status === 200) {
               message.success('已成功添加商品')
             }
@@ -51,9 +54,9 @@ class ProductForm extends React.Component {
             <Form.Item
               label="价格"
               name={'price'}
-              rules={[{ required: true, message: '请指定商品价格' }]}
+              rules={[{ required: true, message: '请指定商品价格'}, validateNumLength(4, 2) ]}
             >
-              <Input placeholder="价格"/>
+              <Input type="number" step=".01" placeholder='价格'/>
             </Form.Item>
             <Form.Item
               label="单位"
