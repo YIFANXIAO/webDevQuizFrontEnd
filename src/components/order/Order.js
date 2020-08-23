@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Table, Space } from 'antd';
+import { Button, Table, Space, message } from 'antd';
 import axios from 'axios';
 const { Column } = Table;
 
@@ -34,8 +34,14 @@ class Order extends React.Component{
   
     handleDeleteOrder = (id) => {
         console.log(id);
-        axios.delete('/order/' + id);
-        this.reloadPage();
+        axios.delete('/order/' + id)
+            .then((req) => {
+                if(req.status === 200) {
+                    this.reloadPage();
+                    message.success('已删除');
+                }
+            })
+        
     }
 
     render() {

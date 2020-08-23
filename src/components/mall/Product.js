@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'antd';
+import { Card, message} from 'antd';
 import { Button } from 'antd';
 import axios from 'axios';
 import { PlusOutlined } from '@ant-design/icons';
@@ -10,6 +10,11 @@ class Product extends React.Component{
 
     onHandleBuy = (id) => {
         axios.post('/order/' + id)
+            .then((req) => {
+                if(req.status === 200) {
+                    message.success("已添加到购物车")
+                }
+            })
     }
 
     render() {

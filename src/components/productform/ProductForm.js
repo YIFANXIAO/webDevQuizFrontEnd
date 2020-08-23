@@ -1,6 +1,7 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import axios from 'axios';
+import './ProductForm.css'
 
 class ProductForm extends React.Component {
 
@@ -20,6 +21,7 @@ class ProductForm extends React.Component {
           .then((req) => {
             if(req.status === 200) {
               this.reloadPage();
+              message.success('已成功添加商品')
             }
           });
       }
@@ -29,7 +31,9 @@ class ProductForm extends React.Component {
       const { formLayout } = this.state;
       return (
         <div>
-          <h1>添加商品</h1>
+          <div className="title">
+            <p>添加商品</p>
+          </div>
           <Form 
             layout={formLayout} 
             onFinish={handleAddProduct} 
