@@ -2,8 +2,9 @@
   "name": "web-dev-quiz-front-end",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:9090",
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",

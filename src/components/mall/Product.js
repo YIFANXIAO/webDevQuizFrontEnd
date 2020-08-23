@@ -2,6 +2,8 @@ import React from 'react'
 import { Card } from 'antd';
 import { Button } from 'antd';
 import axios from 'axios';
+import { PlusOutlined } from '@ant-design/icons';
+import './Product.css';
 const { Meta } = Card;
 
 class Product extends React.Component{
@@ -19,7 +21,12 @@ class Product extends React.Component{
             >
                 <Meta title={this.props.name}/>
                 <p>单价：{this.props.price}元/{this.props.unit}</p>
-                <Button type="primary" onClick={() => this.onHandleBuy(this.props.productId)}>购买</Button>
+                <div className='btn-div'>
+                    <Button shape="circle"
+                        onClick={() => this.onHandleBuy(this.props.productId)}
+                        icon={<PlusOutlined />}
+                    ></Button>
+                </div>
             </Card>
         </div>
     }
