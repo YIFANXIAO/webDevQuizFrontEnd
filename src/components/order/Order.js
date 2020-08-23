@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Table, Space, message } from 'antd';
+import { Button, Table, Space, message, Radio } from 'antd';
 import axios from 'axios';
 import './Order.css'
 const { Column } = Table;
@@ -19,7 +19,7 @@ class Order extends React.Component{
         this.getOrdersData();
     }
     getOrdersData() {
-        axios.get('/order/all')
+        axios.get('/orders')
             .then((respone) => {
                 if(respone.data.hasOwnProperty('code')) {
                     this.setState({isNotEmpty: false})
@@ -50,7 +50,7 @@ class Order extends React.Component{
         return (<div>
             {
                 this.state.isNotEmpty ?
-                <Table dataSource={this.state.orders}>
+                <Table dataSource={this.state.orders} pagination={false}>
                     <Column title="名字" dataIndex="name" key="name" />
                     <Column title="单价" dataIndex="price" key="price" />
                     <Column title="数量" dataIndex="count" key="count" />
@@ -64,7 +64,7 @@ class Order extends React.Component{
                         </Space>
                     )}
                     />
-                </Table> :
+                </Table>:
                 <div className="no-data">
                     <p>暂无订单，返回商城页面继续购买</p>
                 </div>

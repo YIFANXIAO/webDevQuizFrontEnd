@@ -14,7 +14,7 @@ class Mall extends React.Component{
     }
 
     getProductsData() {
-        axios.get('/product/all')
+        axios.get('/products')
             .then((respone) => {
                 this.setState({
                     products : respone.data,
