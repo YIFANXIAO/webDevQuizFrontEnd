@@ -13,26 +13,16 @@ class Product extends React.Component{
     }
 
     onHandleBuy = (id) => {
-        this.setState({
-            loading: true
-        })
+        this.setState({loading: true})
         axios.post('/order/' + id)
             .then((req) => {
-                if(req.status === 200) {
-                    message.success("已添加到购物车")
-                }
+                if(req.status === 200) message.success("已添加到购物车")
             })
-            .then(() => {
-                this.setState({
-                    loading: false
-                })
-            })
+            .then(() => this.setState({loading: false}))
     }
 
     render() {
-
-        const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-
+        const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
         return <div>
             <Card
                 hoverable
@@ -42,9 +32,8 @@ class Product extends React.Component{
                 <Meta title={this.props.name}/>
                 <p>单价：{this.props.price}元/{this.props.unit}</p>
                 <div className='btn-div'>
-                    {
-                        this.state.loading ?
-                        <Spin indicator={antIcon} spinning={this.state.loading} /> : 
+                    {this.state.loading ?
+                        <Spin indicator={loadingIcon} spinning={this.state.loading} /> : 
                         <Button shape="circle"
                             onClick={() => this.onHandleBuy(this.props.productId)}
                             icon={<PlusOutlined />}
@@ -55,5 +44,4 @@ class Product extends React.Component{
         </div>
     }
 }
-
 export default Product

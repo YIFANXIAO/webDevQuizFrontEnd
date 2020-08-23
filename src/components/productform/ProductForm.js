@@ -55,9 +55,7 @@ class ProductForm extends React.Component {
             }
           })
           .then(() => {
-            setTimeout(()=>{
-              this.reloadPage();
-            }, 300)
+            setTimeout(()=>{this.reloadPage()}, 300)
           });
       }
       const handleFormFeild = errorInfo => {
